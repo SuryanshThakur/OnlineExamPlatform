@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Itsourcecode Examination Application</title>
+<style type="text/css">
+	 
+</style>
+
+<script language="javascript" type="text/javascript" src="script.js"></script>
+
+
+<body >
+	<header>
+		<p id="demo" class="timer"></p>
+	</header>
+
+	<div class="box">
+	<div class="head">
+		<center>
+			<h1>Front End Development Exam</h1>
+		</center>
+	</div>
+	 <h2 id="test_status" style="text-align:center;"></h2>
+	 <div id="test"></div>
+	 <script type="text/javascript">
+		window.onload = function () {
+				var auto = setTimeout(function () { autoRefresh(); }, 10);
+
+				function submitform() {
+					window.location.href = "FirstPage.html";
+					alert('Times up!! \n Submitted Successfully');
+					document.forms["myForm"].submit();
+				}
+
+				function autoRefresh() {
+					clearTimeout(auto);
+					auto = setTimeout(function () { submitform(); autoRefresh(); }, 10000);
+				}
+			}
+	 </script> 
+	 <script>
+		var deadline = new Date("Sep 22, 2022 15:37:25").getTime();
+			var x = setInterval(function () {
+				var now = new Date().getTime();
+				var t = deadline - now;
+				var days = Math.floor(t / (1000 * 60 * 60 * 24));
+				var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+				var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+				var seconds = Math.floor((t % (1000 * 60)) / 1000);
+				document.getElementById("demo").innerHTML = "Exam ends in:"+ hours + "h " + minutes + "m " + seconds + "s ";
+				if (t < 0) {
+					clearInterval(x);
+					document.getElementById("demo").innerHTML = "EXPIRED";
+				}
+			}, 1000);
+	 </script>
+	</div>
+</body>
+</html>
